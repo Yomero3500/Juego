@@ -10,7 +10,7 @@ var config = {
         default: "arcade",
         arcade: {
             gravity: { y: 800},
-            debug: true
+            debug: false
         }
     },
     backgroundColor: 0x000000,
