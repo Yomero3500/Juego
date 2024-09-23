@@ -26,7 +26,7 @@ class Escena2 extends Phaser.Scene {
             key: "muerte",
             frames: this.anims.generateFrameNumbers("playerDead",{start:0, end: 2}),
             frameRate:8,
-            repeat:-1
+            repeat:1
         })
         //Fondo
         this.background = this.add.image(0,0,"background");
@@ -149,8 +149,8 @@ class Escena2 extends Phaser.Scene {
     }
 
     gameOver() {
-    this.player.anims.play("muerte", true)
-    this.scoreWorker.postMessage('stop');
+        this.player.anims.play("muerte", true)
+        this.scoreWorker.postMessage('stop');
     
     Swal.fire({
         title: 'Los lacayos te han capturado',
@@ -174,5 +174,6 @@ class Escena2 extends Phaser.Scene {
             location.reload();  
         }
     });
+        this.scene.pause();
     }
 }
