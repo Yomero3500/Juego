@@ -55,7 +55,6 @@ class Escena2 extends Phaser.Scene {
         this.plataformas.create(1564,900, "plataforma").setScale(2);
         this.plataformas.create(1628,900, "plataforma").setScale(2);
 
-        //Suelo
         const floorWorker = new Worker('.//WWorkers/floorWorker.js');
         let sueloY = 1080; 
         let sueloStep = 64; 
@@ -70,6 +69,12 @@ class Escena2 extends Phaser.Scene {
             });
 
             floorWorker.terminate();
+        };
+
+        const musicWorker = new Worker('.//WWorkers/musicWorker.js');
+        musicWorker.postMessage({ action: 'play' });
+        musicWorker.onmessage = (e) => {
+            console.log(e.data);
         };
 
         //Jugador
